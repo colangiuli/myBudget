@@ -1,10 +1,94 @@
-<div class="page">
-
-    <section class="panel panel-default">
-        <div class="panel-heading"><strong><span class="glyphicon glyphicon-th"></span> Blank Page</strong></div>
-        <div class="panel-body">
-            <p>Content goes here</p>
+<div class="page" data-ng-controller="budgetCtrl">
+    <div class="panel panel-primary">
+        <div class="panel-heading"><span class=""></span>Budget</div>
+        <div class="panel-body ui-map " data-slim-scroll data-scroll-height="200px">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, tenetur, repellat obcaecati unde esse doloribus accusamus exercitationem vitae corporis blanditiis aspernatur quibusdam porro rerum voluptatum quos eligendi necessitatibus enim! Maiores, doloribus, fuga, perspiciatis cupiditate aperiam repellendus natus nisi recusandae rerum optio consectetur nemo reprehenderit nesciunt molestiae at. Molestiae, nesciunt inventore dignissimos itaque exercitationem vero aliquam provident aperiam repudiandae nostrum. Ipsa, possimus, natus culpa magni rem iusto ut quisquam cupiditate aspernatur nemo sed aliquam quam illum illo quos dolor animi ipsum dolorem sunt beatae officia facere voluptatem omnis! Sapiente, illo voluptatibus amet omnis optio labore nesciunt porro facere praesentium laudantium molestiae voluptas eos incidunt quod nulla. Provident, debitis, odit qui ab facere adipisci laborum ea necessitatibus sapiente voluptatibus minima inventore veritatis unde nemo ipsa quisquam dolorum autem et minus repudiandae nostrum aliquam numquam aperiam similique vero delectus maiores non aliquid laboriosam eius impedit cum vel a corporis consequuntur natus earum suscipit. Repellat, laborum, cupiditate aperiam distinctio vero dolor est quibusdam sit rerum expedita tempore reiciendis quidem quisquam deserunt autem pariatur eos fugiat qui hic temporibus ullam dicta voluptatem sequi at iusto! Accusamus, iure, optio temporibus molestiae ab dolor blanditiis veritatis corporis eius reiciendis sed molestias obcaecati dolorem similique rerum illo excepturi.</p>
         </div>
-    </section> 
+    </div>
+   <section class="panel panel-default table-dynamic">
+        <div class="panel-heading"><strong><span class=""></span> <button class="btn btn-w-md btn-gap btn-success" data-ng-click="notify('success')">New</button></strong></div>
+        <table class="table table-bordered table-striped table-responsive">
+            <thead>
+                <tr>
+                    <th><div class="th">
+                        budget Name
+                        <span class="fa fa-angle-up"
+                              data-ng-click=" order('name') "
+                              data-ng-class="{active: row == 'name'}"></span>
+                        <span class="fa fa-angle-down"
+                              data-ng-click=" order('-name') "
+                              data-ng-class="{active: row == '-name'}"></span>
+                    </div></th>
+                    <th><div class="th">
+                        shared
+                        <span class="fa fa-angle-up"
+                              data-ng-click=" order('shared') "
+                              data-ng-class="{active: row == 'shared'}"></span>
+                        <span class="fa fa-angle-down"
+                              data-ng-click=" order('-shared') "
+                              data-ng-class="{active: row == '-shared'}"></span>
+                    </div></th>
+                    <th><div class="th">
+                        budget
+                        <span class="fa fa-angle-up"
+                              data-ng-click=" order('budget') "
+                              data-ng-class="{active: row == 'budget'}"></span>
+                        <span class="fa fa-angle-down"
+                              data-ng-click=" order('-budget') "
+                              data-ng-class="{active: row == '-budget'}"></span>
+                    </div></th>
+                    <th><div class="th">
+                        used
+                        <span class="fa fa-angle-up"
+                              data-ng-click=" order('used') "
+                              data-ng-class="{active: row == 'used'}"></span>
+                        <span class="fa fa-angle-down"
+                              data-ng-click=" order('-used') "
+                              data-ng-class="{active: row == '-used'}"></span>
+                    </div></th>
+                     <th><div class="th">
+                        Actions
+                    </div></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="budget in currentPagebudgets">
+                    <td>{{budget.name}}</td>
+                    <td>{{budget.shared}}</td>
+                    <td>{{budget.budget}}</td>
+                    <td>{{budget.used}}</td>
+                    <td style="width:300px;"><button class="btn btn-w-md btn-gap btn-warning" data-ng-click="notify('success')">Edit</button>
+                    <button class="btn btn-w-md btn-gap btn-danger" data-ng-click="notify('success')">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <footer class="table-footer">
+            <div class="row">
+                <div class="col-md-6 page-num-info">
+                    <span>
+                        Show 
+                        <select data-ng-model="numPerPage"
+                                data-ng-options="num for num in numPerPageOpt"
+                                data-ng-change="onNumPerPageChange()">
+                        </select> 
+                        entries per page
+                    </span>
+                </div>
+                <div class="col-md-6 text-right pagination-container">
+                    <pagination class="pagination-sm"
+                                ng-model="currentPage"
+                                total-items="filteredbudgets.length"
+                                max-size="4"
+                                ng-change="select(currentPage)"
+                                items-per-page="numPerPage"
+                                rotate="false"
+                                previous-text="&lsaquo;" next-text="&rsaquo;"
+                                boundary-links="true"></pagination>
+                </div>
+            </div>
+        </footer>
+    </section>
 
 </div>
