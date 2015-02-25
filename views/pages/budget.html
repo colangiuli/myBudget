@@ -57,8 +57,10 @@
                     <td>{{budget.shared}}</td>
                     <td>{{budget.budget}}</td>
                     <td>{{budget.used}}</td>
-                    <td style="width:300px;"><button class="btn btn-w-md btn-gap btn-warning" data-ng-click="notify('success')">Edit</button>
-                    <button class="btn btn-w-md btn-gap btn-danger" data-ng-click="notify('success')">Delete</button>
+                    <td style="width:150px;"><button class="btn btn-w-md btn-gap btn-warning" style="
+    min-width: 0px !important; data-ng-click="notify('success')"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-w-md btn-gap btn-danger" style="
+    min-width: 0px !important; data-ng-click="notify('success')"><i class="fa fa-trash-o"></i></button>
                     </td>
                 </tr>
             </tbody>
