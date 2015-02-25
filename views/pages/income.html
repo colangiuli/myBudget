@@ -1,8 +1,8 @@
-<div class="page" data-ng-controller="budgetCtrl">
+<div class="page" data-ng-controller="incomeCtrl">
     <div class="panel panel-primary">
         <div class="panel-heading"><span class=""></span>Budget</div>
         <div class="panel-body ui-map " data-slim-scroll data-scroll-height="100px">
-            <p>in questa pagina puoi gestire le tue categorie assegnando ad ognuna il relativo budget</p>
+            <p>in questa pagina puoi gestire le tue categorie assegnando ad ognuna il relativo income</p>
         </div>
     </div>
    <section class="panel panel-default table-dynamic">
@@ -20,6 +20,24 @@
                               data-ng-class="{active: row == '-name'}"></span>
                     </div></th>
                     <th><div class="th">
+                        frequency
+                        <span class="fa fa-angle-up"
+                              data-ng-click=" order('frequency') "
+                              data-ng-class="{active: row == 'frequency'}"></span>
+                        <span class="fa fa-angle-down"
+                              data-ng-click=" order('-frequency') "
+                              data-ng-class="{active: row == '-frequency'}"></span>
+                    </div></th>
+                    <th><div class="th">
+                        value
+                        <span class="fa fa-angle-up"
+                              data-ng-click=" order('value') "
+                              data-ng-class="{active: row == 'value'}"></span>
+                        <span class="fa fa-angle-down"
+                              data-ng-click=" order('-value') "
+                              data-ng-class="{active: row == '-value'}"></span>
+                    </div></th>
+                     <th><div class="th">
                         shared
                         <span class="fa fa-angle-up"
                               data-ng-click=" order('shared') "
@@ -28,40 +46,22 @@
                               data-ng-click=" order('-shared') "
                               data-ng-class="{active: row == '-shared'}"></span>
                     </div></th>
-                    <th><div class="th">
-                        budget
-                        <span class="fa fa-angle-up"
-                              data-ng-click=" order('budget') "
-                              data-ng-class="{active: row == 'budget'}"></span>
-                        <span class="fa fa-angle-down"
-                              data-ng-click=" order('-budget') "
-                              data-ng-class="{active: row == '-budget'}"></span>
-                    </div></th>
-                    <th><div class="th">
-                        used
-                        <span class="fa fa-angle-up"
-                              data-ng-click=" order('used') "
-                              data-ng-class="{active: row == 'used'}"></span>
-                        <span class="fa fa-angle-down"
-                              data-ng-click=" order('-used') "
-                              data-ng-class="{active: row == '-used'}"></span>
-                    </div></th>
                      <th><div class="th">
                         Actions
                     </div></th>
                 </tr>
             </thead>
             <tbody>
-                <tr data-ng-repeat="budget in currentPagebudgets">
-                    <td>{{budget.name}}</td>
-                    <td>{{budget.shared}}</td>
-                    <td>{{budget.budget}}</td>
-                    <td>{{budget.used}}</td>
+                <tr data-ng-repeat="income in currentPageincomes">
+                    <td>{{income.name}}</td>
+                    <td>{{income.frequency}}</td>
+                    <td>{{income.value}}</td>
+                    <td>{{income.shared}}</td>
                     <td style="width:150px;">
-                    	<button class="btn btn-w-md btn-gap btn-warning" data-ng-click="editBudget(budget)" style="min-width: 0px !important;">
+                    	<button class="btn btn-w-md btn-gap btn-warning" data-ng-click="editBudget(income)" style="min-width: 0px !important;">
                     			<i class="fa fa-pencil"></i>
                     	</button>
-                    	<button class="btn btn-w-md btn-gap btn-danger" data-ng-click="deleteBudget(budget)" style="min-width: 0px !important;">
+                    	<button class="btn btn-w-md btn-gap btn-danger" data-ng-click="deleteBudget(income)" style="min-width: 0px !important;">
                     			<i class="fa fa-trash-o"></i>
                     	</button>
                     </td>
@@ -84,7 +84,7 @@
                 <div class="col-md-6 text-right pagination-container">
                     <pagination class="pagination-sm"
                                 ng-model="currentPage"
-                                total-items="filteredbudgets.length"
+                                total-items="filteredincomes.length"
                                 max-size="4"
                                 ng-change="select(currentPage)"
                                 items-per-page="numPerPage"
@@ -105,18 +105,22 @@
                     <form role="form" class="ng-pristine ng-valid">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control" id="name" data-ng-model="budget.name" placeholder="name">
+                            <input type="text" class="form-control" id="name" data-ng-model="income.name" placeholder="name">
                         </div>
                         <div class="form-group">
-                           <label for="budget">Budget</label>
-                            <input type="number" class="form-control" id="budget" data-ng-model="budget.budget" placeholder="budget">
+                           <label for="frequency">Frequency</label>
+                            <input type="number" class="form-control" id="frequency" data-ng-model="income.frequency" placeholder="frequency">
+                        </div>                        
+                        <div class="form-group">
+                           <label for="value">Value</label>
+                            <input type="text" class="form-control" id="value" data-ng-model="income.value" placeholder="Value">
                         </div>
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox" data-ng-model="budget.shared"> Shared
+                                <input type="checkbox" data-ng-model="income.shared"> Shared
                             </label>
                         </div>
-                        <center><button type="submit" data-ng-click="saveBudget(budget)" class="btn btn-primary btn-w-md">Submit</button></center>
+                        <center><button type="submit" data-ng-click="saveBudget(income)" class="btn btn-primary btn-w-md">Submit</button></center>
                     </form>
 
     </div>
