@@ -2,11 +2,11 @@
     <div class="panel panel-primary">
         <div class="panel-heading"><span class=""></span>Budget</div>
         <div class="panel-body ui-map " data-slim-scroll data-scroll-height="200px">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime, tenetur, repellat obcaecati unde esse doloribus accusamus exercitationem vitae corporis blanditiis aspernatur quibusdam porro rerum voluptatum quos eligendi necessitatibus enim! Maiores, doloribus, fuga, perspiciatis cupiditate aperiam repellendus natus nisi recusandae rerum optio consectetur nemo reprehenderit nesciunt molestiae at. Molestiae, nesciunt inventore dignissimos itaque exercitationem vero aliquam provident aperiam repudiandae nostrum. Ipsa, possimus, natus culpa magni rem iusto ut quisquam cupiditate aspernatur nemo sed aliquam quam illum illo quos dolor animi ipsum dolorem sunt beatae officia facere voluptatem omnis! Sapiente, illo voluptatibus amet omnis optio labore nesciunt porro facere praesentium laudantium molestiae voluptas eos incidunt quod nulla. Provident, debitis, odit qui ab facere adipisci laborum ea necessitatibus sapiente voluptatibus minima inventore veritatis unde nemo ipsa quisquam dolorum autem et minus repudiandae nostrum aliquam numquam aperiam similique vero delectus maiores non aliquid laboriosam eius impedit cum vel a corporis consequuntur natus earum suscipit. Repellat, laborum, cupiditate aperiam distinctio vero dolor est quibusdam sit rerum expedita tempore reiciendis quidem quisquam deserunt autem pariatur eos fugiat qui hic temporibus ullam dicta voluptatem sequi at iusto! Accusamus, iure, optio temporibus molestiae ab dolor blanditiis veritatis corporis eius reiciendis sed molestias obcaecati dolorem similique rerum illo excepturi.</p>
+            <p>in questa pagina puoi gestire le tue categorie assegnando ad ognuna il relativo budget</p>
         </div>
     </div>
    <section class="panel panel-default table-dynamic">
-        <div class="panel-heading"><strong><span class=""></span> <button class="btn btn-w-md btn-gap btn-success" data-ng-click="notify('success')">New</button></strong></div>
+        <div class="panel-heading"><strong><span class=""></span> <button class="btn btn-w-md btn-gap btn-success" data-ng-click="newBudget()">New</button></strong></div>
         <table class="table table-bordered table-striped table-responsive">
             <thead>
                 <tr>
@@ -57,10 +57,9 @@
                     <td>{{budget.shared}}</td>
                     <td>{{budget.budget}}</td>
                     <td>{{budget.used}}</td>
-                    <td style="width:150px;"><button class="btn btn-w-md btn-gap btn-warning" style="
-    min-width: 0px !important; data-ng-click="notify('success')"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-w-md btn-gap btn-danger" style="
-    min-width: 0px !important; data-ng-click="notify('success')"><i class="fa fa-trash-o"></i></button>
+                    <td style="width:300px;"><button class="btn btn-w-md btn-gap btn-warning" data-ng-click="editBudget(budget.objectId)"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-w-md btn-gap btn-danger" data-ng-click="deleteBudget(budget.objectId)"><i class="fa fa-trash-o"></button>
+
                     </td>
                 </tr>
             </tbody>
@@ -94,3 +93,27 @@
     </section>
 
 </div>
+
+<script type="text/ng-template" id="editBudget.html">
+
+    <div class="modal-body">
+              
+                    <form role="form" class="ng-pristine ng-valid">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" data-ng-model="budget.name" placeholder="name">
+                        </div>
+                        <div class="form-group">
+                           <label for="budget">Budget</label>
+                            <input type="text" class="form-control" id="budget" data-ng-model="budget.budget" placeholder="budget">
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" data-ng-model="budget.shared"> Shared
+                            </label>
+                        </div>
+                        <center><button type="submit" class="btn btn-primary btn-w-md">Submit</button></center>
+                    </form>
+
+    </div>
+</script>
