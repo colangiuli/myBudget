@@ -7,10 +7,10 @@
             }
         }])
 
-.controller('SignInCtrl', function($scope, Users, $window, $http) {
+.controller('SignInCtrl', function($scope, Users, $window, $http, $location) {
 	$scope.user = {"username": $window.localStorage['username']};
 	if ((!!$window.localStorage['SESSION_TOKEN']) && ($window.localStorage['SESSION_TOKEN'] !="") ){
-		$state.go('tab.categories');
+		$location.path('/');
 	}
 	
 	$scope.signIn = function(user) {
@@ -28,7 +28,8 @@
 					Users.getFriendsRole().success(function(data){
 						// this callback will be called asynchronously
 						// when the response is available
-						$window.localStorage['FRIENDS_ROLE_ID'] = data.results[0].objectId;
+					$window.localStorage['FRIENDS_ROLE_ID'] = data.results[0].objectId;
+					$location.path('/');
 					});
 				}).error(function() {
 					alert("login error!");

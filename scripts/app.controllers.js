@@ -2,10 +2,13 @@
         "use strict";
         angular.module("app.controllers", []).controller("AppCtrl", ["$scope", "$rootScope", function($scope, $rootScope) {
             var $window;
-            return $window = $(window), $scope.main = {
+            return $window = $(window), 
+            $scope.main = {
                 brand: "Rainbow",
                 name: "Lisa Doe"
-            }, $scope.pageTransitionOpts = [{
+            }, 
+
+            $scope.pageTransitionOpts = [{
                 name: "Scale up",
                 "class": "ainmate-scale-up"
             }, {
@@ -17,13 +20,15 @@
             }, {
                 name: "Flip Y",
                 "class": "animate-flip-y"
-            }], $scope.admin = {
+            }], 
+            $scope.admin = {
                 layout: "wide",
                 menu: "vertical",
                 fixedHeader: !0,
                 fixedSidebar: !1,
                 pageTransition: $scope.pageTransitionOpts[0]
-            }, $scope.$watch("admin", function(newVal, oldVal) {
+            }, 
+            $scope.$watch("admin", function(newVal, oldVal) {
                 return "horizontal" === newVal.menu && "vertical" === oldVal.menu ? void $rootScope.$broadcast("nav:reset") : newVal.fixedHeader === !1 && newVal.fixedSidebar === !0 ? (oldVal.fixedHeader === !1 && oldVal.fixedSidebar === !1 && ($scope.admin.fixedHeader = !0, $scope.admin.fixedSidebar = !0), void(oldVal.fixedHeader === !0 && oldVal.fixedSidebar === !0 && ($scope.admin.fixedHeader = !1, $scope.admin.fixedSidebar = !1))) : (newVal.fixedSidebar === !0 && ($scope.admin.fixedHeader = !0), void(newVal.fixedHeader === !1 && ($scope.admin.fixedSidebar = !1)))
             }, !0), $scope.color = {
                 primary: "#248AAF",
@@ -33,12 +38,34 @@
                 warning: "#FAC552",
                 danger: "#E9422E"
             }
-        }]).controller("HeaderCtrl", ["$scope", function() {}]).controller("NavContainerCtrl", ["$scope", function() {}]).controller("NavCtrl", ["$scope", "taskStorage", "filterFilter", function($scope, taskStorage, filterFilter) {
+        }])
+        .controller("HeaderCtrl", ["$scope","$localstorage","$location", function($scope,$localstorage,$location) {
+              $scope.username =  $localstorage.get('username');
+              $scope.email =  $localstorage.get('email');
+              $scope.img =  $localstorage.get('img');
+              $scope.signOut= function() {
+                    $localstorage.set('SESSION_TOKEN',"");
+                    $location.path('/pages/signin');
+                };
+        }])
+        
+
+        .controller("NavContainerCtrl", ["$scope", function() {
+
+        }])
+
+        .controller("NavCtrl", ["$scope", "taskStorage", "filterFilter", function($scope, taskStorage, filterFilter) {
             var tasks;
-            return tasks = $scope.tasks = taskStorage.get(), $scope.taskRemainingCount = filterFilter(tasks, {
+            tasks = $scope.tasks = taskStorage.get();
+            $scope.taskRemainingCount = filterFilter(tasks, {
                 completed: !1
-            }).length, $scope.$on("taskRemaining:changed", function(event, count) {
+            }).length;
+            $scope.$on("taskRemaining:changed", function(event, count) {
                 return $scope.taskRemainingCount = count
             })
-        }]).controller("DashboardCtrl", ["$scope", function() {}])
+        }])
+
+        .controller("DashboardCtrl", ["$scope", function() {
+
+        }])
     }).call(this)
