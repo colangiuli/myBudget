@@ -1,0 +1,14 @@
+{
+    "applications": {
+        "_default": {
+            "link": "budget"
+        }, 
+        "budget": {
+            "applicationId": "WbAXovOrZQo9Mxr7TtPOXsxPuofZ0R8FEaW7qrTt", 
+            "masterKey": "p2b9fw7N9mh3B1vJiM9OOoyw3ejkQxnPj7LVSpbJ"
+        }
+    }, 
+    "global": {
+        "parseVersion": "1.3.4"
+    }
+}
