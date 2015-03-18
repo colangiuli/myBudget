@@ -1,0 +1,90 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<div class="modal">
+
+  <ion-content scroll="false" class="padding">
+ 		  <!-- value-->
+	<div class="row" ng-click="showTab('calc')">
+        <div class="col calc_value">
+          {{ strDotted }}
+        </div>
+    </div>
+	<!-- categories-->
+	  <div class="row">
+        <div class="col calc_categories">
+		<ion-slide-box pager-click="navSlide(index)" does-continue="true">
+			<ion-slide ng-repeat="item in categories">
+					<div class="row">
+					   <div class="col  button  button-icon" ng-repeat="category in item" ng-click="setCategory('{{ category.objectId }}')" ng-class="checkSelected(category.objectId)"><i class="icon {{ category.icon }}"></i></div>	
+					</div>
+			</ion-slide>
+		</ion-slide-box>
+			<!--<select ng-model="newExpense.categoryID"><option ng-repeat="item in categories" value= "{{ item.id }}" >{{ item.name }}</option></select>-->
+		</div>
+	  </div>	
+	  
+	<div class="row calc-container">
+	  <div class="col calc-col" ng-show="show=='calc'">
+			<div class="row button-row">
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('1')">1</div>	
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('2')">2</div>			
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('3')">3</div>		
+			</div>
+			<div class="row button-row">
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('4')">4</div>	
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('5')">5</div>			
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('6')">6</div>		
+			</div>	  
+			<div class="row button-row">
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('7')">7</div>	
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('8')">8</div>			
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('9')">9</div>		
+			</div>	  	  
+			<div class="row button-row">
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('0')">0</div>			
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('00')">00</div>		
+			   <div class="col  calc_button button  button-icon" ng-click="addNumber('D')"><i class="icon ion-arrow-left-c"></i></div>		   	
+			</div>  
+	  </div>
+	  <div class="col calendar-col" ng-show="show=='calendar'">
+			<div class="row">
+				<div class="col full-height">
+					<center>
+					<span class="input-label myInputLabel">Date</span>
+					<input class="myInput" type="date" ng-model="newExpense.date">
+					</center>
+				</div>	
+			</div>  
+	  </div>
+	  <div class="col detail-col" ng-show="show=='detail'">
+			<div class="row">
+				<div class="col full-height">
+					<center>
+					<span class="input-label myInputLabel">Description</span>
+					<input class="myInput" type="text" placeholder="Exp. Description" ng-model="newExpense.note">
+					</center>
+				</div>	
+			</div>  
+	  </div>
+	  <div class="col tab-col col-25">
+			<div class="row">
+			   <div class="col  calc_tabs button  button-icon" ng-click="showTab('calendar')"><i class="icon ion-calendar"></i></div>	
+			</div>
+			<div class="row">
+			   <div class="col  calc_tabs button  button-icon" ng-click="showTab('detail')"><i class="icon ion-more"></i></div>		
+			</div>	  
+			<div class="row">
+			   <div class="col  calc_tabs button  button-icon" ng-click="createExpense()"><i class="icon ion-checkmark-round" ></i></div>	
+			</div>	  	  
+			<div class="row">	
+			   <div class="col  calc_tabs button  button-icon" ng-click="closeExpenseModalPage()"><i class="icon ion-close-round"></i></div>	   	
+			</div>
+	  </div>
+	</div>     
+  </div>
+  </ion-content>
+</ion-view>
