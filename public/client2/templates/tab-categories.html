@@ -1,0 +1,28 @@
+<ion-view view-title="Categories">
+
+  <ion-content>
+    <ion-list> 
+        <ion-item class="item item-icon-left item-icon-right item-complex" ng-repeat="category in categories"  href="#/tab/categories/{{category.objectId}}">
+         <i class="icon {{category.icon}}"></i>
+
+        <div class="row">
+            <div class="col-50">
+                <h3>{{category.name}}</h3>
+				<p ng-show="category.shared == 'true'">shared</p>
+            </div>
+            <div class="col-50" style="padding-top: 12px;vertical-align: middle;">
+				<h3 style="text-align: right;">{{category.used}} / {{category.budget}} €</h3>
+            </div>
+        </div>
+  
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-positive" ng-click="edit(category)">
+          Edit
+        </ion-option-button>
+		<ion-option-button class="button-assertive" ng-click="remove(category)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

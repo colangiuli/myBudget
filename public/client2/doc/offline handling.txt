@@ -1,0 +1,35 @@
+objectId,categoryId,date,note,photo,value,createdAt,updatedAt,owner'
+
+syncing = 0
+
+	localSync
+	syncing = 1
+	cerco se c'e' una riga locale in stato Modified o Deleted
+			se si:
+				la invio a parse
+					onSuccess
+						aggiorna la riga locale con stato Synced
+							onSuccess
+								localSync
+							onFailure
+								syncing = 0
+					onFailure
+						syncing = 0
+			se no:
+				call remoteSync
+
+	remoteSync
+		prendo tutte le righe remote successive a lastSync
+			onSuccess
+				inizio transazione
+					elimino eventuale riga
+					inserisco eventuale riga
+						onSuccess
+							update lastSync
+							syncing = 0
+						onFailure
+							syncing = 0
+							
+			
+							
+					

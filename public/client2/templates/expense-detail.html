@@ -1,0 +1,32 @@
+<ion-view>
+ <ion-nav-title>{{expense.note}}</ion-nav-title>
+    <ion-nav-buttons side="secondary">
+      <button class="button  button-icon icon ion-edit" ng-click="editExpense(expense)"></button>
+    </ion-nav-buttons>
+  <ion-content class="padding">
+ 
+  	<div class="row">
+		<div class="col">
+			<h4>{{expense.date | date:dateFormat}}</h4>
+			<h2>{{expense.value}} €</h2>	
+		</div>
+	</div>
+    <div class="row">
+		<div class="col">
+			
+			<i class="icon {{expense.categoryID.icon}}" style="font-size: 70px;"></i>
+			<h4>{{expense.categoryID_name}}</h4>
+		</div>
+	</div>	
+  	<div class="row" >
+		<div class="col ">
+			<div class="photo-container">
+				<img ng-src="{{expense.photo}}">
+				<div class="photo-mask"></div>
+			</div>
+		</div>
+	</div>
+
+
+  </ion-content>
+</ion-view>

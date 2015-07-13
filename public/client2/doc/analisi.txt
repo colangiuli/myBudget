@@ -1,0 +1,46 @@
+fase di configurazione
+0- caricamento eventuali partners
+		e-mail
+
+1 - carichi introiti
+		descrizione
+		eventuale cadenza
+		importo
+
+2 - riempi la busta risparmi con quello che eventualmente hai da parte 
+	(potrai successivamente assegnare parte di questi soldi al pagamento delle prossime spese periodiche o eventualmente utilizzarli per compensare degli occasionali sforamenti degli altri budget)
+
+3 - carichi spese fisse
+		vuoi assegnare a questa busta parte dei tuoi risparmi?
+		EVENTUALE cadenza, 
+		importo, 
+		next occurrence, 
+		categoria, 
+		scegli se condiviso
+
+4 - con i soldi rimanenti definisci i budget 
+ questi saranno gli envelope da cui andrai a pescare per le spese di tutti i giorni
+		cadenza
+		importo
+		IMMAGINE 
+		DESCRIZIONE
+		scegli se condiviso
+
+ fase giornaliera
+	carichi le spese giorno per giorno
+			envelope
+			importo, data, note e fare una foto
+		se quando inserisci una spesa in un envelope non hai abbastanza fondi il sistema ti propone in automatico di prelevare la cifra da un altro envelope
+		(compresi gli accantonamenti per spese periodiche)
+		eventualmente si puo' pensere di permettere di prelevare dal budget del mese successivo... (pensavo magari all'uso della CC)
+	carichi eventuali entrate inaspettate
+		(di default finiranno nell'envelope risparmi)
+	
+ 
+problemi:
+
+se sfori da un envelope devo permettere di pescare anche dagli accantonamenti per le spese fisse??? (io penso di si)
+ (nel caso andro' ad intaccare quello messo da parte)
+
+
+
